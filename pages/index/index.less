@@ -1,0 +1,107 @@
+@import './common.less';
+
+.seed-layout {
+    padding-bottom: 64px;
+    display: flex;
+    .card-header {
+        .ant-card-body {
+            padding: 0;
+        }
+        .seed-form {
+            display: flex;
+            align-items: center;
+            .col-first {
+                padding-left: 32px;
+            }
+            .col-third {
+                padding-left: 40px;
+            }
+            .col-second, .col-four {
+                min-width: 200px;
+                padding: 8px 16px;
+                border-radius: 4px;
+                background: #E6ECF2;
+                background: #E6ECF2;
+                .wave-type {
+                    font-size: 24px;
+                    color: #E97050;
+                    font-weight: bold;
+                }
+                .mb-10 {
+                    margin-bottom: 10px;
+                }
+            }
+            .col-five {
+                display: flex;
+                align-items: center;
+                text-align: right;
+                justify-content: flex-end;
+                .number {
+                    display: flex;
+                    width: 104px;
+                    height: 104px;
+                    font-size: 66px;
+                    margin-left: 20px;
+                    border-radius: 4px;
+                    color: #fff;
+                    align-items: center;
+                    justify-content: center;
+                    background: #E97050;  
+                    font-family: 'AlibabaSans-Heavy';
+                    font-weight: bold;  
+                }
+            }
+            .input-seed {
+                width: 160px;
+            }
+            .input-seed-second {
+                width: 208px; 
+            }
+        }
+    }
+    .card-body {
+        flex: 1;
+        margin-top: 14px;
+        .seed-grid {
+            margin-top: 16px;
+        }
+        .ant-card-body {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+        }
+    }
+    .card-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        overflow: auto;
+        box-shadow: 0 -2px 8px 0 rgba(157,162,182,0.28), inset 0 1px 0 0 #DCE1E6;
+        .left-text {
+            display: flex;
+            padding-left: 48px;
+        }
+        .right-group {
+            text-align: right;
+            padding-left: 88px;
+            position: relative;
+            top: 6px;
+            button {
+                margin-right: 24px;
+            }
+            .button-default {
+                background: #FFFFFF;
+                border: 1px solid #0265FF;
+                border-radius: 3px;
+                color: #0265FF;
+            }
+        }
+        .ant-card-body {
+            padding: 10px;
+        }
+    }
+}
+
+
+
