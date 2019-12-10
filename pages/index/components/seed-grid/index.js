@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Popover } from 'antd'
 import axios from 'axios'
 import minColumns from './config'
-import styles from './index.less'
+import './index.less'
 const AgGrid =  dynamic(import('../../../../components/ag-grid'), {
     ssr: false
 })
@@ -64,7 +64,7 @@ class SeedGrid extends Component {
         const { homeGridData } = this.state
         console.log('homeGridData', homeGridData)
         return (
-            <div className={styles["seed-ag-grid-wrap"]}>
+            <div className="seed-ag-grid-wrap">
                 <AgGrid
                     rowData={homeGridData ? homeGridData.rows : []}
                     columnDefs={this.getColumn()}

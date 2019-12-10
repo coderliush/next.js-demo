@@ -5,15 +5,15 @@ import { Layout, Card, Row, Col, Form, Input, Badge, Button, message } from 'ant
 import SeedWall from './components/seed-wall'
 import SeedGrid from './components/seed-grid'
 // import ModalSetup from '../seed-modal-setup'
-// import ModalWarn from '../seed-modal-warn'
-// import ModalSendGoods from '../seed-modal-send-goods'
-// import ModalAbnormal from '../seed-modal-abnormal'
+import ModalWarn from './components/seed-modal-warn'
+import ModalSendGoods from './components/seed-modal-send-goods'
+import ModalAbnormal from './components/seed-modal-abnormal'
 // import RndGoods from '../seed-popover-goods'
 
 const Splitter = dynamic(import('../../components/splitter'), {
     ssr: false
 })
-import styles from './index.less'
+import './index.less'
 // import "@/assets/less/index.less"
 
 const FormItem = Form.Item
@@ -70,59 +70,59 @@ class PrintSeed extends Component {
     render() {
         const { line, column, visibleModalSetup, visibleModalWarn, visibleModalSendGoods, visibleModalAbnormal, disabled } = this.state
         return (
-            <Layout className={styles["seed-layout"]}>
-                <Card size="small" className={styles["card-header"]}>
+            <Layout className="seed-layout">
+                <Card size="small" className="card-header">
                     <Row>
-                        <Form layout="inline" className={styles["seed-form"]}>
-                            <Col span={6} className={styles["col-first"]}>
+                        <Form layout="inline" className="seed-form">
+                            <Col span={6} className="col-first">
                                 <FormItem
                                     colon={false}
-                                    label={<Badge className={styles["badge"]} color="#E97050" text="波次"></Badge>}
+                                    label={<Badge className="badge" color="#E97050" text="波次"></Badge>}
                                 >
-                                    <Input className={styles["input-seed"]} onPressEnter={this.onPressWave} autoFocus="autofocus" />
+                                    <Input className="input-seed" onPressEnter={this.onPressWave} autoFocus="autofocus" />
                                 </FormItem>
                             </Col>
-                            <Col span={4} className={styles["col-second"]}>
-                                <div className={styles["font-18"], styles["text-bold"]}>波次类型：</div>
-                                <div className={styles["wave-type"]}>一单一品</div>
+                            <Col span={4} className="col-second">
+                                <div className="font-18 text-bold">波次类型：</div>
+                                <div className="wave-type">一单一品</div>
                             </Col>
-                            <Col span={6} className={styles["col-third"]}>
+                            <Col span={6} className="col-third">
                                 <FormItem
                                     colon={false}
-                                    label={<Badge className={styles["badge"]} color="#E97050" text="商品"></Badge>}
+                                    label={<Badge className="badge" color="#E97050" text="商品"></Badge>}
                                 >
-                                    <Input className={styles["input-seed-second"]} onPressEnter={this.onPressGoods} />
+                                    <Input className="input-seed-second" onPressEnter={this.onPressGoods} />
                                 </FormItem>
                             </Col>
-                            <Col span={4} className={styles["col-four"]}>
-                                <div className={styles["font-18"], styles["text-bold"], styles["mb-10"]} style={{ fontSize: 18 }}>订单数量：</div>
-                                <div className={styles["font-18"], styles["text-bold"]} style={{ fontSize: 18 }}>商品数量：</div>
+                            <Col span={4} className="col-four">
+                                <div className="font-18 text-bold mb-10" style={{ fontSize: 18 }}>订单数量：</div>
+                                <div className="font-18 text-bold" style={{ fontSize: 18 }}>商品数量：</div>
                             </Col>
-                            <Col span={4} className={styles["col-five"]}>
-                                <Badge color="#E97050" className={styles["badge"]} text="当前格子"></Badge>
-                                <div className={styles["number"]}>10</div>
+                            <Col span={4} className="col-five">
+                                <Badge color="#E97050" className="badge" text="当前格子"></Badge>
+                                <div className="number">10</div>
                             </Col>
                         </Form>
                     </Row>
                 </Card>
 
-                <Card size="small" className={styles["card-body"]}>
-                    <SeedWall line={line} column={column} />
-                    <SeedGrid />
-                    {/* <Splitter primaryIndex={0} secondaryInitialSize={800} storageName="seed-body-splitter" vertical={false}>
+                <Card size="small" className="card-body">
+                    {/* <SeedWall line={line} column={column} />
+                    <SeedGrid /> */}
+                    <Splitter primaryIndex={0} secondaryInitialSize={800} storageName="seed-body-splitter">
                         <SeedWall line={line} column={column} />
                         <SeedGrid />
-                    </Splitter>  */}
+                    </Splitter> 
                 </Card>
-                <Card size="small" className={styles["card-footer"]}>
+                <Card size="small" className="card-footer">
                     <Row>
-                        <Col span={9} className={styles["left-text"]}>
-                            <div className={styles["text-warn"]} style={{ whiteSpace: "nowrap", fontWeight: 'bold' }}>说明：</div>
-                            <div className={styles["text-bold"]}>未进行播种操作的格子：灰色；正在播种的格子：橙色；播种完成无异常的格子：绿色；发货单异常的格子：红色。</div>
+                        <Col span={9} className="left-text">
+                            <div className="text-warn" style={{ whiteSpace: "nowrap", fontWeight: 'bold' }}>说明：</div>
+                            <div className="text-bold">未进行播种操作的格子：灰色；正在播种的格子：橙色；播种完成无异常的格子：绿色；发货单异常的格子：红色。</div>
                         </Col>
-                        <Col className={styles["right-group"]} span={14}>
-                            <Button className={styles["button-default"]} onClick={this.onRePrint}>重新打印</Button>
-                            <Button className={styles["button-default"]} onClick={this.onCheck}>复核</Button>
+                        <Col className="right-group" span={14}>
+                            <Button className="button-default" onClick={this.onRePrint}>重新打印</Button>
+                            <Button className="button-default" onClick={this.onCheck}>复核</Button>
                             <Button type="primary">结束波次</Button>
                             <Button type="primary">打印发货单</Button>
                             <Button type="primary" disabled={disabled}>打印物流单</Button>
@@ -133,9 +133,9 @@ class PrintSeed extends Component {
                 {/* 默认参数设置弹框 */}
                 {/* <ModalSetup visible={visibleModalSetup} onCancelSetup={this.onCancelSetup} onWallConfig={this.onWallConfig} onDisableButton={this.onDisableButton} />    */}
                  {/* 温馨提示弹框 */}
-                {/* <ModalWarn visible={visibleModalWarn} onCloseWarn={this.onCloseWarn} onSetup={this.onSetup} />   */}
-                {/* 发货单列表弹框 */}
-                {/* <ModalSendGoods visible={visibleModalSendGoods} onCloseSendGoods={this.onCloseSendGoods} />  
+                <ModalWarn visible={visibleModalWarn} onCloseWarn={this.onCloseWarn} onSetup={this.onSetup} />  
+                <ModalSendGoods visible={visibleModalSendGoods} onCloseSendGoods={this.onCloseSendGoods} /> 
+        
                 <ModalAbnormal visible={visibleModalAbnormal} onCloseAbnormal={this.onCloseAbnormal} /> */}
                 {/* <RndGoods />   */}
             </Layout >
