@@ -28,8 +28,8 @@
           useESModules: false
       }],
       "@babel/plugin-proposal-async-generator-functions",
-    //   ["import", {"libraryName": "antd", "libraryDirectory": "es", "style": true}],
       ["@babel/plugin-proposal-decorators", {"legacy": true}],
+      ["import", {"libraryName": "antd", "style": true}],
       "@babel/plugin-proposal-class-properties",
       "@babel/plugin-syntax-dynamic-import"
   ];

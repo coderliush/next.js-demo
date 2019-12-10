@@ -10,7 +10,6 @@ import SeedWall from './components/seed-wall'
 // import RndGoods from '../seed-popover-goods'
 
 // import Splitter from '../../components/splitter'
-// import 'antd/dist/antd.less'
 import styles from './index.less'
 // import "@/assets/less/index.less"
 

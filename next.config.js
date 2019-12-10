@@ -1,13 +1,29 @@
-const withLess = require('@zeit/next-less')
-const withCSS = require('@zeit/next-css')
+// const withLess = require('@zeit/next-less')  // 如果配置 css module，需要修改 webpack 配置对 antd 的影响 
+const antdLessLoader = require("next-antd-aza-less")  // 同时配置 antd 和 css 模块化
 
-module.exports = withLess({
-    cssModules: true,
-    lessLoaderOptions: {
-        javascriptEnabled: true,
-        localIdentName: '[local]___[hash:base64:5]',
-      },
-})
+// fix: prevents error when .less files are required by node
+if (typeof require !== 'undefined') {
+  require.extensions['.less'] = (file) => {}
+}
 
+// module.exports = withLess({
+//   // cssModules: true,
+//   lessLoaderOptions: {
+//     javascriptEnabled: true,
+//   },
+//   webpack(config) {
+//     console.log("config", config)
+//   }
+// })
 
-
+module.exports = antdLessLoader({
+  cssModules: true,
+  cssLoaderOptions: {
+    importLoaders: 1,
+    localIdentName: "[local]___[hash:base64:5]",
+  },
+  lessLoaderOptions: {
+    javascriptEnabled: true,
+    // modifyVars: modifyVars
+  }
+});
