@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import { Icon } from 'antd'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import './index.less'
+import styles from './index.less'
 
 const splitterLineSize = 16,
     // 缓存中的标识，含有'disabledDrag'时只有主板块
@@ -230,7 +230,7 @@ export default class Splitter extends Component {
         const { vertical, foldText, showFold } = this.props
         const { primaryMinSize, secondaryMinSize, secondaryInitialSize, secondaryIndex, visibleFold, visibleContent } = this.state
         const childrenArr = React.Children.toArray(this.props.children)
-        const itemClassNames = classNames('splitter-item', vertical ? 'splitter-vertical' : 'splitter-horizontal')
+        const itemClassNames = classNames(styles['splitter-item'], vertical ? styles['splitter-vertical'] : styles['splitter-horizontal'])
         // 主板块内容一直显示；当点击收齐时，次板块内容不显示。
         const visibleChildren0 = (secondaryIndex === 1 || (secondaryIndex === 0 && visibleContent))
         const visibleChildren1 = (secondaryIndex === 0 || (secondaryIndex === 1 && visibleContent))

@@ -1,16 +1,20 @@
 import React, { Component } from 'react'
+import dynamic from 'next/dynamic'
 import { connect } from 'react-redux'
 import { Popover } from 'antd'
-import AgGrid from '../../../../components/ag-grid'
+import axios from 'axios'
 import minColumns from './config'
 import styles from './index.less'
+const AgGrid =  dynamic(import('../../../../components/ag-grid'), {
+    ssr: false
+})
 
-@connect(
-    (seed) => (seed),
-    dispatch => ({
-        queryHomeGrid: payload => dispatch({ type: 'seed/queryHomeGrid', payload }),
-    })
-)
+// @connect(
+//     (seed) => (seed),
+//     dispatch => ({
+//         queryHomeGrid: payload => dispatch({ type: 'seed/queryHomeGrid', payload }),
+//     })
+// )
 class SeedGrid extends Component {
     constructor(props) {
         super(props);
@@ -34,10 +38,31 @@ class SeedGrid extends Component {
         return minColumns
     }
     componentDidMount() {
-        this.props.queryHomeGrid({ pageNo: 1, pageSize: 50 })
+        // this.props.queryHomeGrid({ pageNo: 1, pageSize: 50 })
+        axios.get('http://127.0.0.1:9090/tc/delivery/delivery_wave/data/list', {
+            pageNo: 1,
+            lastName: 50,
+            headers: { 
+                Cookie: '_ati=2589300460228; ERPLanguage=zh; JSESSIONID=2376B922B3A11CD447E2EE8E09D900A8-n2'}
+        }).then(res => {
+            this.setState({ homeGridData: res.data })
+        })
+
+        // setTimeout(() => {
+        //     this.setState({
+        //         homeGridData: 
+        //     })
+        // }, 10);
+    }
+
+    componentWillUnmount = () => {
+        this.setState = (state,callback)=>{
+            return;
+          };
     }
     render() {
-        const { homeGridData } = this.state.seed
+        const { homeGridData } = this.state
+        console.log('homeGridData', homeGridData)
         return (
             <div className={styles["seed-ag-grid-wrap"]}>
                 <AgGrid

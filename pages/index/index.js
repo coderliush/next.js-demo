@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
+import dynamic from 'next/dynamic'
 // import { FormattedMessage } from 'react-intl';
 import { Layout, Card, Row, Col, Form, Input, Badge, Button, message } from 'antd'
 import SeedWall from './components/seed-wall'
-// import SeedGrid from './components/seed-grid'
+import SeedGrid from './components/seed-grid'
 // import ModalSetup from '../seed-modal-setup'
 // import ModalWarn from '../seed-modal-warn'
 // import ModalSendGoods from '../seed-modal-send-goods'
 // import ModalAbnormal from '../seed-modal-abnormal'
 // import RndGoods from '../seed-popover-goods'
 
-// import Splitter from '../../components/splitter'
+const Splitter = dynamic(import('../../components/splitter'), {
+    ssr: false
+})
 import styles from './index.less'
 // import "@/assets/less/index.less"
 
@@ -105,7 +108,8 @@ class PrintSeed extends Component {
 
                 <Card size="small" className={styles["card-body"]}>
                     <SeedWall line={line} column={column} />
-                    {/* <Splitter primaryIndex={0} secondaryInitialSize={800} storageName="seed-body-splitter">
+                    <SeedGrid />
+                    {/* <Splitter primaryIndex={0} secondaryInitialSize={800} storageName="seed-body-splitter" vertical={false}>
                         <SeedWall line={line} column={column} />
                         <SeedGrid />
                     </Splitter>  */}
