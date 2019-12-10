@@ -1,14 +1,52 @@
 import React, { Component } from 'react'
 import dynamic from 'next/dynamic'
 import { connect } from 'react-redux'
-import { Popover } from 'antd'
+import { Popover, Icon } from 'antd'
 import axios from 'axios'
-import minColumns from './config'
+
 import './index.less'
 const AgGrid =  dynamic(import('../../../../components/ag-grid'), {
     ssr: false
 })
 
+const minColumns = []
+
+const columnList = [{
+    headerName: '格子号',
+    field: 'noPickNumber',
+    filter: false,
+},
+{
+    headerName: '已播/需播',
+    field: 'deliveryOrderWaveState',
+    filter: false,
+},
+{
+    headerName: '商品图片',
+    field: 'expressId',
+    filter: false,
+},
+{
+    width: 230,
+    headerName: '商品名称',
+    field: 'deliveryOrderWaveType',
+    filter: true,
+}, {
+    headerName: '商品条码',
+    field: 'expressId',
+    filter: false,
+}]
+
+for (let item of columnList) {
+    minColumns.push({
+        headerName: item['headerName'],
+        field: item['field'],
+        filter: item.filter,
+        cellRenderer: item['cellRenderer'],
+        cellRendererFramework: item['cellRendererFramework'],
+        width: item.width || 136
+    })
+}
 // @connect(
 //     (seed) => (seed),
 //     dispatch => ({

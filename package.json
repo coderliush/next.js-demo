@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "build:start": "next build && PORT=3001 npm start"
+    "build:start": "next build && npm start"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
