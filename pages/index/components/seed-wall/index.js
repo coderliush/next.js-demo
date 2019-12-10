@@ -1,30 +1,30 @@
 import React, { PureComponent } from 'react'
 import { Popover, Badge } from 'antd'
 import classNames from 'classnames'
-import './index.less'
+import styles from './index.less'
 
 function Content () {
     return (
-        <div className="seed-popover-wrap">
-            <div className="item">
-                <div className="left"><Badge status="default" text="发货单号" />：</div>
-                <div className="right">123</div>
+        <div className={styles["seed-popover-wrap"]}>
+            <div className={styles["item"]}>
+                <div className={styles["left"]}><Badge status="default" text="发货单号" />：</div>
+                <div className={styles["right"]}>123</div>
             </div>
-            <div className="item">
-                <div className="left justify"><Badge status="default" text="异常" />：</div>
-                <div className="right abnormal">已退款</div>
+            <div className={styles["item"]}>
+                <div className={styles["left"], styles["justify"]}><Badge status="default" text="异常" />：</div>
+                <div className={styles["right"], styles["abnormal"]}>已退款</div>
             </div>
-            <div className="item">
-                <div className="left"><Badge status="default" text="播种详情" />：</div>
-                <div className="right">
-                    <span className="text-bold">4&nbsp;</span>
-                    <span className="text-light">/16</span>
+            <div className={styles["item"]}>
+                <div className={styles["left"]}><Badge status="default" text="播种详情" />：</div>
+                <div className={styles["right"]}>
+                    <span className={styles["text-bold"]}>4&nbsp;</span>
+                    <span className={styles["text-light"]}>/16</span>
                 </div>
             </div>
-            <div className="item item-last">
+            <div className={styles["item"], styles["item-last"]}>
                 <Badge status="default" text="发货单商品明细" />：
-                <div className="right detail-product">
-                    百香果：<span className="text-bold">12&nbsp;</span><span className="text-light">/20</span>
+                <div className={styles["right"], styles["detail-product"]}>
+                    百香果：<span className={styles["text-bold"]}>12&nbsp;</span><span className={styles["text-light"]}>/20</span>
                 </div>
             </div>  
         </div>
@@ -52,9 +52,9 @@ class SeedWall extends PureComponent {
         let _col = []
         for (let i = 0; i < column; i++) {
             const gridNumber = i + 1 + curLine * column
-            const gridCls = classNames('grid', {
-                'active': gridNumber === number,
-                'default': gridNumber !== number,
+            const gridCls = classNames(styles['grid'], {
+                [styles.active]: gridNumber === number,
+                [styles.default]: gridNumber !== number,
             })
             _col.push(
                 <Popover key={i} content={<Content />} trigger="click">
@@ -71,7 +71,7 @@ class SeedWall extends PureComponent {
         let _row = []
         for (let i = 0; i < line; i++) {
             _row.push(
-                <div className="row" key={i} style={{ height:  `${100 / (parseInt(line) + 2)}%` }}>
+                <div className={styles["row"]} key={i} style={{ height:  `${100 / (parseInt(line) + 2)}%` }}>
                     {this.renderCol(i)}
                 </div>
             )
@@ -80,7 +80,7 @@ class SeedWall extends PureComponent {
     }
     render() {
         return (
-            <div className="seed-wall-wrap">
+            <div className={styles["seed-wall-wrap"]}>
                 {this.renderRow()}
             </div>
         )

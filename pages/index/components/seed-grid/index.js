@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Popover } from 'antd'
 import AgGrid from '../../../../components/ag-grid'
 import minColumns from './config'
-import './index.less'
+import styles from './index.less'
 
 @connect(
     (seed) => (seed),
@@ -23,7 +23,6 @@ class SeedGrid extends Component {
         }
     }
     getColumn = () => {
-        let that = this
         let Col = minColumns.find(item => item.field === 'expressId')
         Col.cellRendererFramework = params => {
             return (
@@ -40,7 +39,7 @@ class SeedGrid extends Component {
     render() {
         const { homeGridData } = this.state.seed
         return (
-            <div className="seed-ag-grid-wrap">
+            <div className={styles["seed-ag-grid-wrap"]}>
                 <AgGrid
                     rowData={homeGridData ? homeGridData.rows : []}
                     columnDefs={this.getColumn()}

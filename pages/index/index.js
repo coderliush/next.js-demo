@@ -9,7 +9,8 @@ import SeedWall from './components/seed-wall'
 // import ModalAbnormal from '../seed-modal-abnormal'
 // import RndGoods from '../seed-popover-goods'
 
-import Splitter from '../../components/splitter'
+// import Splitter from '../../components/splitter'
+// import 'antd/dist/antd.less'
 import styles from './index.less'
 // import "@/assets/less/index.less"
 
@@ -28,7 +29,6 @@ class PrintSeed extends Component {
             visibleModalWarn: true,  // 是否展示提示弹框
             visibleModalSendGoods: false, // 是否展示发货单列表弹框
             visibleModalAbnormal: false, // 是否显示异常单据弹框
-
         }
     }
 
@@ -105,11 +105,11 @@ class PrintSeed extends Component {
                 </Card>
 
                 <Card size="small" className={styles["card-body"]}>
-                    <Splitter primaryIndex={0} secondaryInitialSize={800} storageName="seed-body-splitter"> */}
+                    <SeedWall line={line} column={column} />
+                    {/* <Splitter primaryIndex={0} secondaryInitialSize={800} storageName="seed-body-splitter">
                         <SeedWall line={line} column={column} />
-                        111
-                        {/* <SeedGrid /> */}
-                    </Splitter> 
+                        <SeedGrid />
+                    </Splitter>  */}
                 </Card>
                 <Card size="small" className={styles["card-footer"]}>
                     <Row>
