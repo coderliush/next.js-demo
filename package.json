@@ -32,7 +32,7 @@
     "jquery": "1.12.4",
     "less": "^3.10.3",
     "lodash": "4.17.15",
-    "moment": "2.24.0",
+    "moment": "2.29.4",
     "next": "9.1.4",
     "next-antd-aza-less": "^1.0.2",
     "pinyin": "2.9.0",
