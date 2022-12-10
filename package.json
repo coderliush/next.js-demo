@@ -36,7 +36,7 @@
     "next": "9.1.4",
     "next-antd-aza-less": "^1.0.2",
     "pinyin": "2.9.0",
-    "qs": "6.7.0",
+    "qs": "6.7.3",
     "react": "16.9.0",
     "react-contexify": "4.1.1",
     "react-contextmenu": "2.13.0",
